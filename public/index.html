@@ -1,33 +1,28 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The web site of climatesolutions</title>
-    <!-- The style.css file allows you to change the look of your web pages.
-         If you include the next line in all your web pages, they will all share the same look.
-         This makes it easier to make new pages for your site. -->
-    <link href="/style.css" rel="stylesheet" type="text/css" media="all">
-  </head>
-  <body>
-    <h1>Welcome to my Website!</h1>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Climate Solutions — Home</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body data-page="home">
+  <div data-include="partials/nav.html"></div>
 
-    <p>This is a paragraph! Here's how you make a link: <a href="https://neocities.org">Neocities</a>.</p>
+  <header class="site-hero">
+    <h1>Climate Solutions</h1>
+    <p>Clean, modular boilerplate powered by plain HTML + CSS, ready for Neocities.</p>
+  </header>
 
-    <p>Here's how you can make <strong>bold</strong> and <em>italic</em> text.</p>
+  <main class="container">
+    <section class="section">
+      <h2>Welcome</h2>
+      <p>This is the homepage. Add your mission statement, featured projects, or latest news here.</p>
+    </section>
+  </main>
 
-    <p>Here's how you can add an image:</p>
-    <img src="/neocities.png" alt="Site hosted by Neocities">
-
-    <p>Here's how to make a list:</p>
-
-    <ul>
-      <li>First thing</li>
-      <li>Second thing</li>
-      <li>Third thing</li>
-    </ul>
-
-    <p>To learn more HTML/CSS, check out these <a href="https://neocities.org/tutorials">tutorials</a>!</p>
-    <p>Or, to ensure you've implemented a proper github workflow, read this text after pushing!</p>
-  </body>
+  <div data-include="partials/footer.html"></div>
+  <script src="js/include.js"></script>
+</body>
 </html>
+
