@@ -2,9 +2,9 @@
   --bg: #ffffff;
   --text: #1f2937;
   --muted: #6b7280;
-  --brand1: #1abc9c;
-  --brand2: #3498db;
-  --nav-bg: #2c3e50;
+  --brand1: #007200;
+  --brand2: #1979b9;
+  --nav-bg: #013f0339;
   --nav-link: #ecf0f1;
   --nav-link-hover: #1abc9c;
   --card: #f8fafc;
@@ -13,15 +13,21 @@
 
 /* Reset-ish */
 * { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; }
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+
 body {
   font-family: system-ui, sans-serif;
   line-height: 1.6;
   background-image: url('imgs/sky.png'); 
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-repeat: repeat-y;           /* 👈 Repeat vertically */
+  background-size: 100% auto;            /* 👈 Stretch full width, natural height */
   background-position: center top;
-  background-attachment: scroll; /* default, but explicit */
+  background-attachment: scroll;         /* Optional: scrolls with content */
   color: var(--text);
 }
 
@@ -63,22 +69,40 @@ body[data-page="solutions"] nav.site-nav a[href="solutions.html"],
 body[data-page="blog"]      nav.site-nav a[href="blog.html"],
 body[data-page="refs"]      nav.site-nav a[href="references.html"],
 body[data-page="contact"]   nav.site-nav a[href="contact.html"] {
-  background: rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.08);
   opacity: 1;
 }
 
 /* Header (fancy name) */
 .site-hero {
-  padding-top: calc(4vh + 24px); /* push below fixed nav */
-  background: linear-gradient(90deg, var(--brand1), var(--brand2));
-  color: white;
+  position: relative;
+  padding-top: calc(4vh + 20px);
+  padding-bottom: 16px;
   text-align: center;
-  padding-bottom: 28px;
+  color: white;
+  overflow: hidden;
 }
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(26, 188, 156, 0.2),
+    rgba(52, 152, 219, 0.2)
+  );
+  z-index: 0;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+
 .site-hero h1 {
   margin: 0;
-  padding: 28px 16px 8px;
-  font-size: clamp(28px, 6vw, 48px);
+  padding: 16px 12px 4px;
+  font-size: clamp(18px, 3vw, 32px);
   letter-spacing: 1.5px;
   text-transform: uppercase;
 }
@@ -91,12 +115,16 @@ body[data-page="contact"]   nav.site-nav a[href="contact.html"] {
 
 /* Main content wrapper */
 .container {
-  background-color: rgba(255, 255, 255, 0.85); /* 👈 translucent white */
+  background-color: rgba(255, 255, 255, 0.25); /* 👈 translucent white */
   border-radius: 12px;
   padding: 2rem;
   max-width: var(--maxw);
   margin: 3rem auto;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+main {
+  flex: 1;
 }
 
 
@@ -116,7 +144,15 @@ footer {
   padding: 18px 16px;
   text-align: center;
   color: var(--muted);
+  margin-top: auto; /* works with flex layout */
 }
+
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 
 /* Small screens: stack nav if needed */
 @media (max-width: 480px) {
