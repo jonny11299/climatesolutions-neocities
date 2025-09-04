@@ -14,4 +14,5 @@ jobs:
         with:
           api_token: ${{ secrets.NEOCITIES_API_TOKEN }}
           dist_dir: public
-          cleanup: true
+          cleanup: false  # <–– disables deletion, so Neocities doesn’t panic
+
