@@ -1,9 +1,118 @@
-/* CSS is how you can add style to your website, such as colors, fonts, and positioning of your
-   HTML content. To learn how to do something, just try searching Google for questions like
-   "how to change link color." */
+:root {
+  --bg: #ffffff;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --brand1: #1abc9c;
+  --brand2: #3498db;
+  --nav-bg: #2c3e50;
+  --nav-link: #ecf0f1;
+  --nav-link-hover: #1abc9c;
+  --card: #f8fafc;
+  --maxw: 900px;
+}
 
+/* Reset-ish */
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
 body {
-  background-color: white;
-  color: black;
-  font-family: Verdana;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.6;
+}
+
+/* Navbar */
+nav.site-nav {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 4vh;              /* ~4% viewport height */
+  min-height: 48px;         /* usable on small screens */
+  background: var(--nav-bg);
+  display: flex;
+  align-items: center;
+  z-index: 1000;
+}
+nav.site-nav .nav-inner {
+  width: 100%;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 16px;
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+nav.site-nav a {
+  text-decoration: none;
+  color: var(--nav-link);
+  font-weight: 600;
+  padding: 8px 6px;
+  border-radius: 8px;
+  transition: color 0.15s ease, background 0.15s ease, opacity 0.15s ease;
+}
+nav.site-nav a:hover { color: var(--nav-link-hover); }
+
+/* Active link using body[data-page] attribute */
+body[data-page="home"]      nav.site-nav a[href="index.html"],
+body[data-page="solutions"] nav.site-nav a[href="solutions.html"],
+body[data-page="blog"]      nav.site-nav a[href="blog.html"],
+body[data-page="refs"]      nav.site-nav a[href="references.html"],
+body[data-page="contact"]   nav.site-nav a[href="contact.html"] {
+  background: rgba(255,255,255,0.08);
+  opacity: 1;
+}
+
+/* Header (fancy name) */
+.site-hero {
+  padding-top: calc(4vh + 24px); /* push below fixed nav */
+  background: linear-gradient(90deg, var(--brand1), var(--brand2));
+  color: white;
+  text-align: center;
+  padding-bottom: 28px;
+}
+.site-hero h1 {
+  margin: 0;
+  padding: 28px 16px 8px;
+  font-size: clamp(28px, 6vw, 48px);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+.site-hero p {
+  margin: 0 auto 10px;
+  padding: 0 16px 12px;
+  max-width: var(--maxw);
+  color: #eef6ff;
+}
+
+/* Main content wrapper */
+.container {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 20px 16px 48px;
+}
+
+/* Card-ish sections */
+.section {
+  background: var(--card);
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 20px;
+  margin: 16px 0;
+}
+
+/* Footer */
+footer {
+  border-top: 1px solid #e5e7eb;
+  background: #f8fafc;
+  padding: 18px 16px;
+  text-align: center;
+  color: var(--muted);
+}
+
+/* Small screens: stack nav if needed */
+@media (max-width: 480px) {
+  nav.site-nav .nav-inner {
+    gap: 12px;
+    font-size: 14px;
+  }
 }
